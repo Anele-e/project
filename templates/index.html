@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            {% for card in cards %}
+            <div class="col-md-4 mb-4">
+                <div class="fade-in-section h-100">
+                    <div class="pb30 card-display__wrapper">
+                        <div class="card-display__container card-img-border-top">
+                            <div class="card-display__img-container">
+                                <div class="background-image card-display__img-background" role="img" 
+                                     style="background-image: url('{{ url_for('static', filename=card.image) }}'); 
+                                            height: 200px; 
+                                            background-position: center; 
+                                            background-size: cover;">
+                                </div>
+                            </div>
+                            <div class="story-title">
+                                {{ card.description }}
+                            </div>
+                            <a href="#" class="read-more">
+                                <span>Read More</span>
+                                <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
