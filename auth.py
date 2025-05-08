@@ -6,6 +6,7 @@ from flask import (
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from models import db
+from models.user import User
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -13,10 +14,10 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 def register():
     if request.method == 'POST':
         name= request.form['name'],
-        email = request.form['alice@example.com'],
+        email = request.form['email'],
         location = request.form['location'],
         interests = request.form['interests'],
-        can_relocate = request.form['can_relocate'] #only true or false
+        can_relocate = request.form.get('can_relocate') == '1' #only true or false
         username = request.form['username']
          
         password = request.form['password']
@@ -30,16 +31,25 @@ def register():
 
         if error is None:
             try:
-                # CHANGE
-                db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)",
-                    (username, generate_password_hash(confirm_password)),
+                new_user = User(
+                    name=name,
+                    email=email,
+                    location=location,
+                    interests=interests,
+                    can_relocate=can_relocate,
+                    username=username,
+                    password=generate_password_hash(password)
                 )
-                db.commit()
-            except db.IntegrityError:
+                db.session.add(new_user)
+                db.session.commit()
+                flash('Registration successful. Please log in.')
+                return redirect(url_for('auth.login'))
+            except Exception as e:
+                db.session.rollback()
                 error = f"User {username} is already registered."
-            else:
-                return redirect(url_for("auth.login"))
+                # .logger.error(f"Registration error: {e}")
+            # else:
+            #     return redirect(url_for("auth.login"))
 
         flash(error)
 
@@ -51,14 +61,14 @@ def login():
         username = request.form['username']
         password = request.form['password']
         error = None
-        user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
-        ).fetchone()
 
-        user = User.query.filter_by(name=name).first()
+        # SQLAlchemy query to get the user by username
+        user = User.query.filter_by(username=username).first()
+        
 
         if user is None:
             error = 'Incorrect username.'
+
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
 
@@ -66,7 +76,9 @@ def login():
             session.clear()
             session['user_id'] = user['id']
             return redirect(url_for('index'))
-
+        if error is not None:
+            flash(error)
+            print(f"Login error: {error}")
         flash(error)
 
     return render_template('auth/login.html')
@@ -79,14 +91,13 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = db.execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
-        ).fetchone()
+        g.user = User.query.get(user_id)
 
 
 @bp.route('/logout')
 def logout():
     session.clear()
+    flash('You have been logged out')
     return redirect(url_for('index'))
 
 def login_required(view):

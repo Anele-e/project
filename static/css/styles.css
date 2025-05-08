@@ -1,0 +1,48 @@
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  .form-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 700px;
+    margin: 40px auto;
+  }
+  .form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #3b71ca;
+  }
+  .form-floating {
+    margin-bottom: 20px;
+  }
+  .btn-register {
+    background-color: #3b71ca;
+    border: none;
+    padding: 12px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  .btn-register:hover {
+    background-color: #2b5a9b;
+    transform: translateY(-2px);
+  }
+  .form-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  .password-toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 10;
+  }
+  .input-group-text {
+    background-color: #f8f9fa;
+  }

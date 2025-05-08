@@ -5,16 +5,100 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
-  </form>
+<div class="container">
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Create Account</h2>
+      <p class="text-muted">Please fill in the information below</p>
+    </div>
+    
+    <form method="post" id="registrationForm" class="needs-validation" novalidate>
+      <div class="row">
+        <!-- Full Name -->
+        <div class="col-md-6 mb-3">
+          <div class="form-floating">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Siyaxola" required>
+            <label for="name">Full Name</label>
+          </div>
+        </div>
+        
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <div class="form-floating">
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Location -->
+      <div class="mb-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" name="location" id="location" placeholder="City, Country">
+          <label for="location">Location</label>
+        </div>
+      </div>
+      
+      <!-- Interests -->
+      <div class="mb-3">
+        <div class="form-floating">
+          <textarea class="form-control" name="interests" id="interests" placeholder="Tell us about your interests" style="height: 100px"></textarea>
+          <label for="interests">Interests</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- Can Relocate -->
+        <div class="col-md-6 mb-3">
+          <div class="form-floating">
+            <select class="form-select" name="can_relocate" id="can_relocate">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+            <label for="can_relocate"><i class="fas fa-plane me-2"></i>Can Relocate?</label>
+          </div>
+        </div>
+        
+        <!-- Username -->
+        <div class="col-md-6 mb-3">
+          <div class="form-floating">
+            <input type="text" class="form-control" name="username" id="username" placeholder="johndoe123" required>
+            <label for="username"><i class="fas fa-at me-2"></i>Username</label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Password -->
+      <div class="mb-3 position-relative">
+        <div class="form-floating">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+          <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
+          <i class="password-toggle fas fa-eye text-muted" onclick="togglePasswordVisibility('password')"></i>
+        </div>
+      </div>
+      
+      <!-- Confirm Password -->
+      <div class="mb-4 position-relative">
+        <div class="form-floating">
+          <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+          <label for="confirm_password"><i class="fas fa-lock me-2"></i>Confirm Password</label>
+          <i class="password-toggle fas fa-eye text-muted" onclick="togglePasswordVisibility('confirm_password')"></i>
+        
+        </div>
+      </div>
+      
+      <!-- Submit Button -->
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg btn-register">
+          <i class="fas fa-user-plus me-2"></i>Register
+        </button>
+      </div>
+      
+      <div class="form-footer">
+        <p>Already have an account? <a href="{{ url_for('auth.login') }}" class="text-decoration-none">Login here</a></p>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
 
-{% block footer %}
-  <p> Already have an account sign in </p>
-    <a href="{{ url_for('auth.login') }}">Login</a>
-{% endblock %}

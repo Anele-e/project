@@ -8,7 +8,6 @@ class User(db.Model):
     password = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     location = db.Column(db.String(100))
-    gpa = db.Column(db.Float)
     interests = db.Column(db.Text)
     can_relocate = db.Column(db.Boolean, default=False)
 

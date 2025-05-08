@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from models import user, db
 from auth import bp as auth_bp
+from flask_migrate import Migrate
 
 # Configure application
 
@@ -25,28 +26,48 @@ def create_app():
         db.create_all()
     return app
 app = create_app()
+migrate = Migrate(app, db)
 
 @app.route('/')
 def index():
     # sample data for cards in the index page
     cards = [
         {
-            "title": "ijoni",
+            "title": "amajoni",
             "image": "images/South_African_troops.jpg",
-            "description": "Take an aptitude test if you want to become a soldier"
+            "description": "Take an aptitude test"
         },
         {
             "title": "Funuba kwi Computer",
-            "image": "images/icons8-bash-48.png",
-            "description": "Learn about computer careers"
+            "image": "images/comp-image.jpg",
+            "description": "Take aptitude test for computer skills"
         },
         {
-            "title": "Eze zandla",
-            "image": "images/icons8-bash-48.png",
-            "description": "Vocational training"
+            "title": "Results",
+            "image": "images/wheret.jpg",
+            "description": "Calculate where you can be placed"
+        },
+         {
+            "title": "api memes",
+            "image": "",
+            "description": "Get Random memes"
+        },
+        {
+            "title": "Blank1",
+            "image": "",
+            "description": "There will be something here"
+        },
+        {
+            "title": "Blank2",
+            "image": "",
+            "description": "There will be something here"
         },
     ]
     return render_template('index.html', cards=cards)
+
+def get_these_memes():
+    url = f"https://api.memegen.link" #????????????
+
 
 if __name__ == '__main__':
     app.run(debug=True)
