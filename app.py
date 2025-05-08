@@ -18,7 +18,7 @@ def create_app():
 
 
 
-    import auth
+    
     app.register_blueprint(auth_bp)
 
     with app.app_context():
