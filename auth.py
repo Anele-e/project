@@ -13,10 +13,10 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        name= request.form['name'],
-        email = request.form['email'],
-        location = request.form['location'],
-        interests = request.form['interests'],
+        name= request.form['name']
+        email = request.form['email']
+        location = request.form['location']
+        interests = request.form['interests']
         can_relocate = request.form.get('can_relocate') == '1' #only true or false
         username = request.form['username']
          
@@ -28,6 +28,8 @@ def register():
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
+        elif not (name and email and location and interests):
+            error = "Please fill in all fields"
 
         if error is None:
             try:
@@ -47,7 +49,7 @@ def register():
             except Exception as e:
                 db.session.rollback()
                 error = f"User {username} is already registered."
-                print(f"Error: {error}")
+                flash(error)
 
         flash(error)
 

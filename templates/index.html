@@ -2,8 +2,8 @@
 {% block content %}
 <section>
     <section class="bg-dark text-light py-5 text-center full-width-banner">
-        <h1 class="display-4">Welcome to the Pathway App</h1>
-        <p class="lead">Your journey to a better future starts here</p>
+        <h1 class="display-4">Do you have what it takes?</h1>
+        <p class="lead">Take some aptitude tests to find out and more.</p>
     </section>
     
 <section>
@@ -20,8 +20,7 @@
                     <h5 class="mb-0">{{ card.description }}</h5>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2">
-                    <span class="fw-bold">Read More</span>
-                    <span style="font-size: 1.2em;">↗</span>
+                    <a href={{ card.link }}><span class="fw-bold links read-more">Read More</span></a>
                 </div>
             </div>
         </div>

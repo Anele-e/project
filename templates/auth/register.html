@@ -4,6 +4,16 @@
   <h1>{% block title %}Register{% endblock %}</h1>
 {% endblock %}
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
 {% block content %}
 <div class="container">
   <div class="form-container">

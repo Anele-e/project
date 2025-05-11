@@ -56,6 +56,17 @@ body {
     background-color: #06101f;
     transform: translateY(-2px);
   }
+  .read-more {
+    color: #070c11;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .read-more:hover {
+    color: #0056b3; 
+    text-decoration: underline;
+  }
+
   .form-footer {
     text-align: center;
     margin-top: 25px;
