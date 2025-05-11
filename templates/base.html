@@ -8,25 +8,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="{{ url_for('index') }}">Something App</a>
+  <!-- navbar-light bg-light -->
+    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}" style="color: white;">Something App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
       
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ms-auto">
               {% if session['user_id'] %}
                 <li class="nav-item">
                   <a class="nav-link" href="#">Hello, {{ session['username'] }}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('auth.Logout') }}">Logout</a>
+                  <a class="nav-link" href="{{ url_for('auth.Logout') }}" style="color: white;">Logout</a>
                 </li>
               {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                  <a class="nav-link" href="{{ url_for('auth.login') }}" style="color: white;">Login</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url_for('auth.register') }}" style="color: white;">Register</a>
                 </li>
               {% endif %}
             </ul>

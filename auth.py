@@ -47,9 +47,7 @@ def register():
             except Exception as e:
                 db.session.rollback()
                 error = f"User {username} is already registered."
-                # .logger.error(f"Registration error: {e}")
-            # else:
-            #     return redirect(url_for("auth.login"))
+                print(f"Error: {error}")
 
         flash(error)
 

@@ -2,32 +2,58 @@ body {
     background-color: #f8f9fa;
     padding: 20px;
   }
+  .navbar {
+  
+    padding: 10px 20px;
+    transform:none!important;
+    border-bottom: 1px solid grey;
+
+  }
+  .full-width-banner {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+  .hero-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #212529; 
+    color: white;
+}
+  .custom-width {
+    max-width: 100%;
+    margin: 0 auto; 
+}
   .form-container {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    max-width: 700px;
-    margin: 40px auto;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1.5px solid #180505;
+    padding-top: 30px;
+    height: auto;
   }
   .form-header {
     text-align: center;
     margin-bottom: 30px;
-    color: #3b71ca;
+    color: #051125;
   }
   .form-floating {
     margin-bottom: 20px;
   }
-  .btn-register {
-    background-color: #3b71ca;
+  .btn-register, .btn-login {
+    border-radius: 0px;
+    background-color: #040f20;
     border: none;
     padding: 12px 0;
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.3s;
   }
-  .btn-register:hover {
-    background-color: #2b5a9b;
+  .btn-register:hover, .btn-login:hover {
+    background-color: #06101f;
     transform: translateY(-2px);
   }
   .form-footer {
@@ -46,3 +72,22 @@ body {
   .input-group-text {
     background-color: #f8f9fa;
   }
+
+  .custom-card {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.custom-card .card-img-top {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid black;
+}
+
+.custom-card .card-footer {
+    border-top: 1px solid black;
+    background-color: white;
+}

@@ -31,42 +31,48 @@ migrate = Migrate(app, db)
 @app.route('/')
 def index():
     # sample data for cards in the index page
+
+#     SA Army
+# SA Air Force
+# SA Navy
+# SA Military Health Service
+
     cards = [
         {
-            "title": "amajoni",
+            "title": "South African Army",
             "image": "images/South_African_troops.jpg",
-            "description": "Take an aptitude test"
+            "description": "Take an aptitude test",
+            "link": "https://www.army.mil.za/Recruitment/index.html"
         },
         {
+            "title": "South African Navy",
+            "image": "images/navy.jpg",
+            "description": "South African Navy",
+            "link": "https://www.navy.mil.za/Recruitment/index.html"
+        },
+         {
+            "title": "South African Air Force",
+            "image": "images/air-force.jpg",
+            "description": "Get Random memes"
+        },
+        {
+            "title": "South African Military Health Service",
+            "image": "images/health-services.webp",
+            "description": "There will be something here"
+        },
+          {
             "title": "Funuba kwi Computer",
             "image": "images/comp-image.jpg",
             "description": "Take aptitude test for computer skills"
         },
         {
-            "title": "Results",
-            "image": "images/wheret.jpg",
-            "description": "Calculate where you can be placed"
-        },
-         {
-            "title": "api memes",
-            "image": "",
-            "description": "Get Random memes"
-        },
-        {
-            "title": "Blank1",
-            "image": "",
-            "description": "There will be something here"
-        },
-        {
-            "title": "Blank2",
+            "title": "Explore careers",
             "image": "",
             "description": "There will be something here"
         },
     ]
     return render_template('index.html', cards=cards)
 
-def get_these_memes():
-    url = f"https://api.memegen.link" #????????????
 
 
 if __name__ == '__main__':
