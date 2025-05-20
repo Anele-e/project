@@ -1,14 +1,12 @@
-from flask import Flask, flash, redirect, render_template, request, session
-# from flask_session import Session
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from models import user, db
 from auth import bp as auth_bp
+from routes.routes import questions_bp
 from flask_migrate import Migrate
 
 # Configure application
-
-
 
 def create_app():
     app = Flask(__name__)
@@ -16,62 +14,59 @@ def create_app():
 
     # initialize the database
     db.init_app(app)
-
-
-
-    
     app.register_blueprint(auth_bp)
-
+    app.register_blueprint(questions_bp, url_prefix='/questions')
     with app.app_context():
         db.create_all()
     return app
 app = create_app()
+
+
+    
 migrate = Migrate(app, db)
 
 @app.route('/')
 def index():
-    # sample data for cards in the index page
 
-#     SA Army
-# SA Air Force
-# SA Navy
-# SA Military Health Service
-
-    cards = [
+    cards_data = [
         {
             "title": "South African Army",
             "image": "images/South_African_troops.jpg",
             "description": "Take an aptitude test",
-            "link": "https://www.army.mil.za/Recruitment/index.html"
+            "link": url_for('questions.questions_army')
         },
         {
             "title": "South African Navy",
             "image": "images/navy.jpg",
             "description": "South African Navy",
-            "link": "https://www.navy.mil.za/Recruitment/index.html"
+            "link": url_for('questions.questions_navy') 
         },
-         {
+        {
             "title": "South African Air Force",
             "image": "images/air-force.jpg",
-            "description": "Get Random memes"
+            "description": "Get Random memes",
+            "link": url_for('questions.questions_air_force') 
         },
         {
             "title": "South African Military Health Service",
             "image": "images/health-services.webp",
-            "description": "There will be something here"
-        },
-          {
-            "title": "Funuba kwi Computer",
-            "image": "images/comp-image.jpg",
-            "description": "Take aptitude test for computer skills"
+            "description": "There will be something here",
+            "link": url_for('questions.questions_military_health') 
         },
         {
-            "title": "Explore careers",
+            "title": "Funuba kwi Computer",
+            "image": "images/comp-image.jpg",
+            "description": "Take aptitude test for computer skills",
+            "link": url_for('questions.questions_computers') 
+        },
+        {
+            "title": "Explore careers", 
             "image": "",
-            "description": "There will be something here"
+            "description": "There will be something here",
+            "link": "#" 
         },
     ]
-    return render_template('index.html', cards=cards)
+    return render_template('index.html', cards=cards_data)
 
 
 

@@ -22,6 +22,15 @@
                 <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2">
                     <a href={{ card.link }}><span class="fw-bold links read-more">Read More</span></a>
                 </div>
+
+<!-- <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2">
+                    {% if g.user %}
+                        <a href="{{ card.link }}"><span class="fw-bold links read-more">Read More</span></a>
+                    {% else %}
+                        <span class="text-muted">Login to read more</span>
+                    {% endif %}
+                </div> -->
+
             </div>
         </div>
         {% endfor %}
