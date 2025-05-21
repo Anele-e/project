@@ -13,7 +13,7 @@
         <div class="col-md-4 mb-4">
             <div class="custom-card h-100 d-flex flex-column">
                 <div class="card-img-top" 
-                     style="background-image: url('{{ url_for('static', filename=card.image) }}');">
+                     style="background-image: url('{{ url_for("static", filename=card.image) }}');">
                 </div>
                 <div class="p-3 flex-grow-1 d-flex flex-column align-items-center">
                     <h3 class="mb-0 fw-bold">{{ card.title }}</h3><br>

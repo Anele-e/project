@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ branch|title }} Military Skills Development System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="back-button" href="{{ url_for('questions.questions_department', department=branch) }}"><i class="bi bi-arrow-left"></i> Back</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center mb-5">SA {{ branch|upper }} MILITARY SKILLS DEVELOPMENT SYSTEM</h2>
+
+        {% if branch == 'army' %}
+            <div class="requirement-section">
+                <h3>Army Background</h3>
+                <p>The SA Army offers a 2-year MSDS program with professional and functional military training.</p>
+            </div>
+
+            <div class="requirement-section">
+                <h3>Army Requirements</h3>
+                <ul>
+                    <li>RSA Citizen (No dual citizenship)</li>
+                    <li>Age 18 – 22 (Grade 12), 18 – 26 (Tertiary)</li>
+                    <li>APS 17+, No criminal record, medically fit</li>
+                    <li>No visible tattoos</li>
+                </ul>
+            </div>
+
+        {% elif branch == 'navy' %}
+            <div class="requirement-section">
+                <h3>Navy Background</h3>
+                <p>The SA Navy MSDS allows youth to serve on vessels or in technical/naval roles with high discipline.</p>
+            </div>
+
+            <div class="requirement-section">
+                <h3>Navy Requirements</h3>
+                <ul>
+                    <li>RSA Citizen (No dual citizenship)</li>
+                    <li>Age 18 – 22 (Grade 12), 18 – 26 (N6/National Diploma)</li>
+                    <li>Swimming ability required</li>
+                    <li>No criminal record, medically fit</li>
+                </ul>
+            </div>
+
+        {% elif branch == 'airforce' %}
+            <div class="requirement-section">
+                <h3>Airforce Background</h3>
+                <p>The SA Air Force offers MSDS recruits training in aviation, radar, technical and logistics roles.</p>
+            </div>
+
+            <div class="requirement-section">
+                <h3>Airforce Requirements</h3>
+                <ul>
+                    <li>RSA Citizen</li>
+                    <li>18 – 22 (Grade 12), up to 26 with tertiary education</li>
+                    <li>APS 17+ excluding Life Orientation</li>
+                    <li>Height: Min 1.6m, Vision: Min 6/6</li>
+                </ul>
+            </div>
+
+        {% else %}
+            <div class="requirement-section">
+                <h3>Invalid Branch</h3>
+                <p>Please return to the home page and select a valid military branch.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 South African {{ branch|title }} | Military Skills Development System</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</body>
+</html>

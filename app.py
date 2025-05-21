@@ -33,31 +33,31 @@ def index():
             "title": "South African Army",
             "image": "images/South_African_troops.jpg",
             "description": "Take an aptitude test",
-            "link": url_for('questions.questions_army')
+            "link": url_for('questions.questions_department', department='army')
         },
         {
             "title": "South African Navy",
             "image": "images/navy.jpg",
             "description": "South African Navy",
-            "link": url_for('questions.questions_navy') 
+            "link": url_for('questions.questions_department', department='navy')
         },
         {
             "title": "South African Air Force",
             "image": "images/air-force.jpg",
             "description": "Get Random memes",
-            "link": url_for('questions.questions_air_force') 
+            "link": url_for('questions.questions_department', department='air-force') 
         },
         {
             "title": "South African Military Health Service",
             "image": "images/health-services.webp",
             "description": "There will be something here",
-            "link": url_for('questions.questions_military_health') 
+            "link": url_for('questions.questions_department', department='military-health') 
         },
         {
             "title": "Funuba kwi Computer",
             "image": "images/comp-image.jpg",
             "description": "Take aptitude test for computer skills",
-            "link": url_for('questions.questions_computers') 
+            "link": url_for('questions.questions_department', department='computers') 
         },
         {
             "title": "Explore careers", 

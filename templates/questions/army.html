@@ -1,17 +1,20 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 {% block content %}
 <section>
     <section class="bg-dark text-light py-5 text-center full-width-banner">
-        <li class="text-center">
-            <a class="" href="{{ url_for('auth.login') }}" style="color: white;">Requiments</a>
-        </li>
-        <li class="text-center">
-             <a class="" href="#" style="color: white;">What to Expect in Military</a>
-        </li>
-        <li class="text-center ">
-             <a class="" href="#" style="color: white;">Application Form</a>
-        </li>
-        
+       <nav class="navbar navbar-expand-lg justify-content-center">
+            <ul class="navbar-nav fw-bold mx-auto">
+                <li class="nav-item mx-3 text-light">
+                    <a class="nav-link" href="{{ url_for('questions.requirements', branch='army') }}">Requirements</a>
+                </li>
+                <li class="nav-item mx-3 text-light">
+                    <a class="nav-link" href="#">What to Expect in Military</a>
+                </li>
+                <li class="nav-item mx-3 text-light">
+                    <a class="nav-link" href="http://www.dod.mil.za/document/Form/Forms/SA%20Army%20MSDS%20Application%202026.pdf">Application Form</a>
+                </li>
+            </ul>
+       </nav>
     </section>
 </section>
-{% endblock %}
+{% endblock %} -->
